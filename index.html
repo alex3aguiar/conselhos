@@ -66,7 +66,14 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
 AOS.init();
-const thoughts = [];
+    
+    
+    fetch('https://api.github.com/repos/alex3aguiar/conselhos/issues')
+.then(function(response) {
+        debugger
+  const thoughts =  response.json().filter(a=> a.user.login ==="alex3aguiar");
+
+
 
 
 let batata = true;
@@ -78,11 +85,11 @@ thoughts.forEach(t => {
 
     const author = document.createElement('div');
     author.className = 'author';
-    author.innerHTML = t.author;
+    author.innerHTML = t.created_at;
 
     const phrase = document.createElement('div');
     phrase.className = 'phrase';
-    phrase.innerHTML = t.phrase;
+    phrase.innerHTML = t.title;
 
     const hr = document.createElement('div');
     hr.className = 'line';
@@ -98,5 +105,7 @@ thoughts.forEach(t => {
     //     <div class="phrase">Eu lambo cu</div>
     // </div>
 });
+        
+        })
 </script>
 </html>
