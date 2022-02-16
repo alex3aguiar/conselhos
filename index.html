@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conselhos</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        * { box-sizing: border-box; }
+        html, body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #8375ff;
+        }
+        .title {
+            font-size: 32px;
+            margin-top: 42px;
+            margin-bottom: 42px;
+            padding: 24px 32px;
+            background-color: #ffff00;
+            border-radius: 8px;
+            color: #000;
+        }
+        .thoughts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .thought {
+            width: 80%;
+            min-height: 64px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .line {
+            width: 99%;
+            margin: 8px auto 16px auto;
+            height: 2px;
+            background-color: #e2e2e2;
+        }
+
+        .author {
+            font-size: 24px;
+        }
+
+        .phrase {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="thoughts">
+    <div class="title" data-aos="zoom-in">Conselhos</div>
+</div>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+AOS.init();
+const thoughts = [];
+
+
+let batata = true;
+thoughts.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'thought';
+    div.setAttribute('data-aos', batata ? 'fade-right' : 'fade-left')
+    batata = !batata;
+
+    const author = document.createElement('div');
+    author.className = 'author';
+    author.innerHTML = t.author;
+
+    const phrase = document.createElement('div');
+    phrase.className = 'phrase';
+    phrase.innerHTML = t.phrase;
+
+    const hr = document.createElement('div');
+    hr.className = 'line';
+
+    div.appendChild(author);
+    div.appendChild(hr);
+    div.appendChild(phrase);
+
+    document.querySelector('.thoughts').appendChild(div);
+
+    // <div class="thought" data-aos="fade-right">
+    //     <div class="author">Gruber</div>
+    //     <div class="phrase">Eu lambo cu</div>
+    // </div>
+});
+</script>
+</html>
