@@ -70,8 +70,9 @@ AOS.init();
     
     fetch('https://api.github.com/repos/alex3aguiar/conselhos/issues')
 .then(async function(response) {
- 
-  const thoughts =  await response.json().filter(a=> a.user.login ==="alex3aguiar");
+    const teste = await response.json();
+        debugger
+  const thoughts =  teste.filter(a=> a.user.login ==="alex3aguiar");
 
 
 
